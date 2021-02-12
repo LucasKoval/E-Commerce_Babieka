@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: 'Colección'}) %>   <!--// partial Head //-->
+    <body class="bg-image">
+        
+        <%- include('../partials/header') %>   <!--// partial Header //-->
+        
+        <div class="section px-0 py-0 has-text-centered is-full-desktop">
+            <img src="img/img_home_1.jpg" alt="img_home">
+        </div>
+        
+        <%- include('../partials/banner') %>   <!--// partial Banner //-->
+
+        <main>
+            
+            <section class="section">
+
+                <h1 class="title is-size-1 has-text-centered my-6">COLECCIÓN</h1>
+                <h2 class="subtitle has-text-centered is-size-2">FIESTA</h2>
+
+                <div class="columns is-multiline">
+                    <% for (product of fiestaProducts) { %>
+                        <div class="column is-4-tablet is-3-desktop">
+                            <div class="card has-text-centered rounded mx-4 my-4">
+                                <div class="card-image has-text-centered px-6 pt-5">
+                                    <img src="/img/products/<%= product.model.image.name %>" alt="Artículo de Fiesta">
+                                </div>
+                                <div class="card-content">
+                                    <p class="title is-size-5 mb-2"><%= product.model.name %></p>
+                                    <p class="is-size-5">$ <%= product.price %></p>
+                                </div>
+                                <footer class="card-footer">
+                                    <p class="card-footer-item">
+                                        <a href="/producto/<%= product.id %>" class="has-text-grey">Ver</a>
+                                    </p>
+                                    <p class="card-footer-item">
+                                        <a href="#" class="has-text-grey">Agregar al Carrito</a>
+                                    </p>
+                                </footer>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+
+            </section>
+
+            <section class="section">
+
+                <h2 class="subtitle has-text-centered is-size-2">CASUAL</h2>
+
+                <div class="columns is-multiline">
+                    <% for (product of casualProducts) { %>
+                        <div class="column is-4-tablet is-3-desktop">
+                            <div class="card has-text-centered rounded mx-4 my-4">
+                                <div class="card-image has-text-centered px-6 pt-5">
+                                    <img src="/img/products/<%= product.model.image.name %>" alt="Artículo de Fiesta">
+                                </div>
+                                <div class="card-content">
+                                    <p class="title is-size-5 mb-2"><%= product.model.name %></p>
+                                    <p class="is-size-5">$ <%= product.price %></p>
+                                </div>
+                                <footer class="card-footer">
+                                    <p class="card-footer-item">
+                                        <a href="/producto/<%= product.id %>" class="has-text-grey">Ver</a>
+                                    </p>
+                                    <p class="card-footer-item">
+                                        <a href="#" class="has-text-grey">Agregar al Carrito</a>
+                                    </p>
+                                </footer>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+
+            </section>
+            
+        </main>
+
+        <%- include('../partials/footer') %>   <!--// partial Footer //-->
+
+    </body>
+</html>

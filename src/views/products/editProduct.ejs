@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: 'Editar producto'}) %>   <!--// partial Head //-->
+    <body>
+        
+        <%- include('../partials/header') %>   <!--// partial Header //-->
+        
+        <main class="registermain">
+    
+            <section class= "formulario-upload">
+               
+                <h1 class="h1-size marg-0 centrar">Editar artículo</h1>
+
+                <ul id="errorsFr"></ul>
+
+                <form action="/producto/<%=product.id%>/editar?_method=PUT" method="POST" enctype="multipart/form-data">    <!--// Formulario editar Artículo //-->
+                    
+                    <label for="model"></label>    <!--// Nombre //-->
+                    <p><input type="text" name="name" id="name" value="<%=model.name%>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.name == 'undefined' ? '' : errors.name.msg %></p>
+                    
+                    <p>
+                        <label for="category"> Categoría del artículo : </label>
+                        <select name="category">   <!--// Categoria //-->
+                            <% for (category of categories) { %>
+                                <% if (category.name == model.category.name) { %>
+                                    <option value="<%= category.id %>" selected><%= category.name %></option>
+                                <% } else { %>
+                                    <option value="<%= category.id %>"><%= category.name %></option>
+                                <% } %> 
+                            <% } %> 
+                        </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.category == 'undefined' ? '' : errors.category.msg %></p>
+                    </p>
+                   
+                    <p>
+                        <label for="type">Tipo de artículo : </label> <!--// Tipo //-->
+                        <select name="type">  
+                            <% for (type of types) { %>
+                                <% if (type.name == model.type.name) { %>
+                                    <option value="<%= type.id %>" selected><%= type.name %></option>
+                                <% } else { %>
+                                    <option value="<%= type.id %>"><%= type.name %></option>
+                                <% } %> 
+                            <% } %>
+                        </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></p>
+                    </p>
+                    
+                    <p>
+                        <label for="size">Talle de artículo : </label> <!--// Talle //-->
+                        <select name="size">    
+                            <% for (size of sizes) { %>
+                                <% if (size.number == product.size.number) { %>
+                                    <option value="<%= size.id %>" selected><%= size.number %></option>
+                                <% } else { %>
+                                    <option value="<%= size.id %>"><%= size.number %></option>
+                                <% } %>
+                            <% } %> 
+                        </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.size == 'undefined' ? '' : errors.size.msg %></p>
+                    </p>
+
+                    <p>
+                        <label for="color">Color del artículo : </label> <!--// Color //-->
+                        <select name="color">   
+                            <% for (color of colors) { %>
+                                <% if (color.name == model.color.name) { %>
+                                    <option value="<%= color.id %>" selected><%= color.name %></option>
+                                <% } else { %>
+                                    <option value="<%= color.id %>"><%= color.name %></option>
+                                <% } %>         
+                            <% } %> 
+                        </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.color == 'undefined' ? '' : errors.color.msg %></p>
+                    </p>
+
+                    <label for="description">Descripción del artículo : </label>    <!--// Descripción //-->
+                    <p><textarea name="description" id="description" cols="53" rows="5"><%=model.description%></textarea></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.description == 'undefined' ? '' : errors.description.msg %></p>
+
+                    <p>    <!--// Imagen //-->
+                        <input type="file" name="image" id="image" accept="image/png, .jpeg, .jpg, image/gif"> 
+                        <input type="submit" value="Subir Imagen">  
+                    </p>
+
+                    <label for="stock">Stock : </label>    <!--// Stock //-->
+                    <p><input type="number" name="stock" id="stock" value="<%=product.stock%>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.stock == 'undefined' ? '' : errors.stock.msg %></p>
+
+                    <p>
+                        <label for="discount">Descuento : </label>    <!--// El Discount //-->
+                        <select name="discount">   
+                            <% for (discount of discounts) { %>
+                                <% if (discount.number == product.discount.number) { %>
+                                    <option value="<%= discount.id %>" selected><%= discount.number %>%</option>
+                                <% } else { %>
+                                    <option value="<%= discount.id %>"><%= discount.number %>%</option>
+                                <% } %>         
+                            <% } %> 
+                        </select>
+                        <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></p>
+                    </p>
+
+                    <label for="price">Precio : </label>    <!--// Precio //-->
+                    <p><input type="number" name="price" id="price" value="<%=product.price%>"></p>
+                    <p class="validationErrors"><%= typeof errors == 'undefined' ? '' : typeof errors.price == 'undefined' ? '' : errors.price.msg %></p>    
+
+                    <button type="submit" id="button">Editar artículo</button>  <!--// Botón Editar producto //-->
+                    
+                </form>
+
+                <div>   <!--// Botón Eliminar producto //-->
+                    <button class="displayFlex marg-nonside-10">Eliminar articulo</button>
+                    <aside class="modal">
+                        <div class="modal-content">
+                            ¿ Esta seguro que desea eliminar este articulo ?
+                            <form action="/producto/<%=product.id%>/eliminar?_method=DELETE" method="POST"> 
+                                <button type="submit" class="marg-nonside-10">Eliminar artículo</button> 
+                            </form>
+                            <button class="salir">Salir</button>
+                        </div> 
+                    </aside>
+                </div>
+                
+            </section>
+    
+        </main>
+        
+        <%- include('../partials/footer') %>   <!--// partial Footer //-->
+
+        <script src="/js/alertDelete.js" type="text/javascript"></script>
+
+        <script src="/js/validEditProduct.js" type="text/javascript"></script>
+        
+    </body>
+</html>

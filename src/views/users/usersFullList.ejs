@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: 'Colección'}) %>   <!--// partial Head //-->
+    <body>
+        
+        <%- include('../partials/header') %>   <!--// partial Header //-->
+
+        <main class="d-flex fd-col">
+        
+            <h1 class="lk-title-list">USUARIOS</h1>
+            <h2 class="lk-title-list">Administradores</h2>
+            <div class="lk-mainbox-list">
+                <% for ( adminUser of adminUsers) { %>
+                    <article class="lk-articlebox-list">
+                        <a href="/">
+                            <div class="justify-center opac-img">
+                                <img src="/img/users/<%= adminUser.image %>" alt="imagen de usuario">
+                            </div>
+                            <div class="casual-index">
+                                <p class="marg-0 name-size"><%= adminUser.first_name %> <%= adminUser.last_name %></p>
+                            </div>
+                            <div class="casual-index">
+                                <p class="font-roboto "><%= adminUser.email %></p>
+                            </div>
+                        </a>
+                    </article>
+                <% } %>
+            </div>
+            
+            <h2 class="lk-title-list">Clientes</h2>
+            <div class="lk-mainbox-list">
+                <% for (clientUser of clientUsers) { %>
+                    <article class="lk-articlebox-list">
+                        <a href="/">
+                            <div class="justify-center opac-img">
+                                <img src="/img/users/<%= clientUser.image %>" alt="imagen de usuario">
+                            </div>
+                            <div class="casual-index">
+                                <p class="marg-0 name-size"><%= clientUser.first_name %> <%= clientUser.last_name %></p>
+                            </div>
+                            <div class="casual-index">
+                                <p class="font-roboto "><%= clientUser.email %></p>
+                            </div>
+                        </a>
+                    </article>
+                <% } %>
+            </div>
+            <div class="marg-nonside-50"></div>
+        </main>
+
+        <%- include('../partials/footer') %>   <!--// partial Footer //-->
+
+    </body>
+</html>

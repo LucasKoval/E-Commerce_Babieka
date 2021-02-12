@@ -1,0 +1,69 @@
+:root {
+    --blanco: #FFFFFF;
+    --marron: #804000;
+    --negro: #000000;
+    --nude: #EBC8B2;
+    --oro: #E6BE00;
+    --plata: #BEC2CB;
+    --rojo: #FF0000;
+    --rojobbk: #FA1E1E;
+}
+
+.bg-image {
+    background-image: url('/img/bg/1.jpg');
+}
+
+.color-bbk {
+    background-color: var(--rojobbk);
+    color: white;
+}
+
+.fm-raleway {
+    font-family: 'Raleway', sans-serif;
+}
+
+.rounded {
+    border-radius: 20px!important;
+}
+
+.color-em:hover {
+    color: #ea4335!important;
+}
+.color-wa:hover {
+    color: #25d366!important;
+}
+.color-fb:hover {
+    color: #3b5998!important;
+}
+.color-ig:hover {
+    color: #c13584!important;
+}
+
+.tachado {
+    text-decoration: line-through;
+}
+
+.fixed {
+    position: fixed;
+    width: 100%;
+}
+
+.sale-tag {
+    position:absolute!important;
+    left: 310px;
+    top: 5px;
+}
+.z-index-1 {
+    z-index: 1;
+}
+.z-index-2 {
+    z-index: 2;
+}
+.z-index-3 {
+    z-index: 3;
+}
+
+div .card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 16px rgba(0, 0, 0, 0.2);
+}

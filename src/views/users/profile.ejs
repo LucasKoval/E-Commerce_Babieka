@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: 'Tu perfil'}) %>   <!--// partial Head //-->
+    <body>
+
+        <%- include('../partials/header') %>   <!--// partial Header //-->
+        
+        <div style="margin-top: 40px;">
+            <div class="centrar marg-nonside">
+                <h1 class="font-bebas"><%= loggedUser.first_name %>  <%= loggedUser.last_name %></h1>
+                <img src="/img/users/<%= loggedUser.image %>" width="20%">
+                <br>
+                <br>
+                <div>
+                    <h3 class="font-roboto"><%= loggedUser.email %></h3>
+                </div>
+            </div>
+
+            <div class="centrar">
+                <form action="/usuario/editar" method="GET" enctype="multipart/form-data"> <!--// Botón Editar usuario //-->
+                    <button type="submit" class="cursor-hand">Editar mi perfil</button>
+                </form>
+            </div>
+            <div class="centrar marg-20"><!--// Botón Eliminar usuario //-->
+                <button class="displayFlex cursor-hand">Eliminar mi perfil</button>
+                <aside class="modal">
+                    <div class="modal-content">
+                        ¿ Esta seguro que desea eliminar su perfil ?
+                        <form action="/usuario/eliminar?_method=DELETE" method="POST"> 
+                            <button type="submit" class="marg-nonside-10">Eliminar mi perfil</button> 
+                        </form>
+                        <button class="salir">Salir</button>
+                    </div> 
+                </aside>
+                
+            </div>
+
+            <div class="centrar marg-20">
+                <form action="/usuario/change-password" method="GET"> <!--// Botón cambiar contraseña //-->
+                    <button type="submit" class="cursor-hand">Cambiar mi contraseña</button> 
+                </form>
+            </div>
+        </div>
+
+        <%- include('../partials/footer') %>   <!--// partial Footer //-->
+
+        <script src="/js/alertDelete.js" type="text/javascript"></script>
+        
+    </body>
+</html>
